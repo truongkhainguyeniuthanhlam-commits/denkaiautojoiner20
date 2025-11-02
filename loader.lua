@@ -1,13 +1,10 @@
--- 🔰 Denkai Auto Loader (v4 - ép tải bản mới tuyệt đối)
 local baseURL = "https://raw.githubusercontent.com/truongkhainguyeniuthanhlam-commits/denkaiautojoiner20/main/"
-
-local filesToLoad = {
-    "joiner",
-}
+local filesToLoad = { "joiner" }
 
 for _, fileName in ipairs(filesToLoad) do
-    local url = baseURL .. fileName .. "?update=" .. tostring(os.time()) .. "&r=" .. math.random(1,9999999)
-    print("🔗 Đang tải từ:", url)
+    -- ép tải bản mới (chống cache)
+    local url = baseURL .. fileName .. "?v=" .. tostring(os.time())
+    print("🔗 Đang tải file:", fileName)
 
     local success, response = pcall(function()
         return game:HttpGet(url, true)
