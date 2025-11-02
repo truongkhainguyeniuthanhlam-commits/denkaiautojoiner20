@@ -1,3 +1,4 @@
+-- 🔰 Denkai Auto Loader (v3 - chống cache hoàn toàn)
 local baseURL = "https://raw.githubusercontent.com/truongkhainguyeniuthanhlam-commits/denkaiautojoiner20/main/"
 
 local filesToLoad = {
@@ -5,15 +6,15 @@ local filesToLoad = {
 }
 
 for _, fileName in ipairs(filesToLoad) do
-    local url = baseURL .. fileName .. "?_=" .. tostring(os.time()) -- 💡 phá cache
+    local url = baseURL .. fileName .. "?_=" .. tick() -- 💥 phá cache tuyệt đối
     print("🔗 Đang tải từ:", url)
 
     local success, response = pcall(function()
-        return game:HttpGet(url)
+        return game:HttpGet(url, true)
     end)
 
     if success and response and response ~= "" then
-        print("✅ Loader Script:", fileName)
+        print("✅ Loaded:", fileName)
         local func, loadErr = loadstring(response)
         if func then
             task.spawn(func)
