@@ -1,34 +1,3 @@
-local Lighting = game:GetService("Lighting")
-local RunService = game:GetService("RunService")
-local Workspace = game:GetService("Workspace")
-
-Lighting.GlobalShadows = false
-
-local function clearLighting()
-	for _, obj in pairs(Lighting:GetChildren()) do
-		obj:Destroy()
-	end
-end
-
-local function optimizeWorkspace()
-	for _, part in pairs(Workspace:GetDescendants()) do
-		if part:IsA("BasePart") then
-			part.CastShadow = false
-			part.Material = Enum.Material.Plastic
-		end
-	end
-end
-
-local timer = 0
-RunService.Heartbeat:Connect(function(dt)
-	timer += dt
-	if timer >= 0.1 then
-		timer = 0
-		clearLighting()
-		optimizeWorkspace()
-	end
-end)
-
 getgenv().ESPTracers = true
 
 local Players = game:GetService("Players")
