@@ -1,4 +1,3 @@
--- 🔰 Denkai Auto Loader (v2 - chống cache)
 local baseURL = "https://raw.githubusercontent.com/truongkhainguyeniuthanhlam-commits/denkaiautojoiner20/main/"
 
 local filesToLoad = {
