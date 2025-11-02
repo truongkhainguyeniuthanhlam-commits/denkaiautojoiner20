@@ -2,11 +2,12 @@
 local baseURL = "https://raw.githubusercontent.com/truongkhainguyeniuthanhlam-commits/denkaiautojoiner20/main/"
 
 local filesToLoad = {
-    "denkaiautojoiner",
+    "joiner",
 }
 
 for _, fileName in ipairs(filesToLoad) do
     local url = baseURL .. fileName
+    print("🔗 Đang tải từ:", url) -- Debug
     local success, response = pcall(function()
         return game:HttpGet(url)
     end)
