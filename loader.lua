@@ -1,3 +1,6 @@
+-- 🔰 DenKai Auto Loader (GitHub Version)
+-- Tự động tải file joiner từ GitHub và chạy
+
 local baseURL = "https://raw.githubusercontent.com/truongkhainguyeniuthanhlam-commits/denkaiautojoiner20/main/"
 local filesToLoad = { "joiner" }
 
