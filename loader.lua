@@ -1,27 +1,18 @@
--- 🔰 DenKai Auto Loader (GitHub Version)
--- Tự động tải file joiner từ GitHub và chạy
+-- Auto Update Loader Script
+local url = "https://raw.githubusercontent.com/truongkhainguyeniuthanhlam-commits/denkaiautojoiner20/refs/heads/main/joiner"
 
-local baseURL = "https://raw.githubusercontent.com/truongkhainguyeniuthanhlam-commits/denkaiautojoiner20/main/"
-local filesToLoad = { "joiner" }
+local success, response = pcall(function()
+    return game:HttpGet(url, true)
+end)
 
-for _, fileName in ipairs(filesToLoad) do
-    -- ép tải bản mới (chống cache)
-    local url = baseURL .. fileName .. "?v=" .. tostring(os.time())
-    print("🔗 Đang tải file:", fileName)
-
-    local success, response = pcall(function()
-        return game:HttpGet(url, true)
-    end)
-
-    if success and response and response ~= "" then
-        print("✅ Loader Script:", fileName)
-        local func, loadErr = loadstring(response)
-        if func then
-            task.spawn(func)
-        else
-            warn("⚠️ Lỗi load file:", fileName, loadErr)
-        end
+if success and response then
+    local func, loadError = loadstring(response)
+    if func then
+        func()
+        warn("[AutoUpdater] Đã tải và chạy script mới nhất từ GitHub.")
     else
-        warn("❌ Không thể tải file:", fileName)
+        warn("[AutoUpdater] Lỗi khi load script:", loadError)
     end
+else
+    warn("[AutoUpdater] Không thể kết nối tới GitHub hoặc URL lỗi.")
 end
