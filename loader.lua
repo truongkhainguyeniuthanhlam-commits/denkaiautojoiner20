@@ -12,7 +12,7 @@ for _, fileName in ipairs(filesToLoad) do
         return game:HttpGet(url)
     end)
     if success and response and response ~= "" then
-        print("✅ Loaded:", fileName)
+        print("✅ Loader:", fileName)
         local func, loadErr = loadstring(response)
         if func then
             task.spawn(func)
