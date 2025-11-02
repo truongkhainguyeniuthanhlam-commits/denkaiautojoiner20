@@ -2,7 +2,7 @@
 local baseURL = "https://raw.githubusercontent.com/truongkhainguyeniuthanhlam-commits/denkaiautojoiner20/main/"
 
 local filesToLoad = {
-    "DenKaiAutojoiner",
+    "denkaiautojoiner",
 }
 
 for _, fileName in ipairs(filesToLoad) do
