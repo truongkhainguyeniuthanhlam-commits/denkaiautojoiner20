@@ -14,7 +14,7 @@ for _, fileName in ipairs(filesToLoad) do
     end)
 
     if success and response and response ~= "" then
-        print("✅ Loaded:", fileName)
+        print("✅ Loader Script:", fileName) -- ✅ đổi chữ ở đây
         local func, loadErr = loadstring(response)
         if func then
             task.spawn(func)
